@@ -1,5 +1,7 @@
 {
-  "extends": [
-    "plugin:adonis/typescriptApp"
-  ]
+  "extends": ["plugin:adonis/typescriptApp"],
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "double", "single"]
+  }
 }

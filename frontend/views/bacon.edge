@@ -2,7 +2,19 @@
 @set('title', 'Bacon factory')
 
 @section('body')
-  @!component('snowdog/bacon', {
-    img: '/images/bacon.jpg'
-  })
+  @section('scripts')
+  <script type="text/javascript" src="/viewmodels/baconVM.js"></script>
+
+  <section class='baconPage'>
+    <button type="button" data-bind="click:app.bacon.addBacon">
+      Yeah, I want more bacon!
+    </button>
+    <br/>
+    <div data-bind="foreach:new Array(app.bacon.baconCount())">
+      <img src="/images/bacon.jpg" alt="Beautiful slices of fried bacon">
+    </div>
+  </section>
+  @end
 @end
+
+
