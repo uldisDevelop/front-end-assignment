@@ -57,7 +57,7 @@
     label: 'Phone Number',
     vm: 'app.checkout',
     property: 'phone',
-    placeholder: '(212) 692-93-92',
+    placeholder: '(12) 692-93-92',
   })
 
   @!component('components/step', {
@@ -104,6 +104,9 @@
   @!component('components/button', {
     text: 'COMPLETE PURCHASE',
     onClick: 'app.checkout.send',
+    loading: 'app.checkout.sendingData()',
+    icon: 'shopping_cart',
+    iconClass: 'shoppingCartIcon'
   })
 
   <div class='spacer'></div>

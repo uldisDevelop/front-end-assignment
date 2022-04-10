@@ -1,6 +1,7 @@
 function CheckoutVM() {
   const self = this;
   self.showErrors = ko.observable(false);
+  self.sendingData = ko.observable(false);
 
   self.firstName = ko.observable('');
   self.lastName = ko.observable('');
@@ -45,7 +46,7 @@ function CheckoutVM() {
       res.country = 'Field is required';
     }
     if (validate(self.phone(), 'phone')) {
-      res.phone = 'Required format: (212) 692-93-92';
+      res.phone = 'Required format: (21) 692-93-92';
     }
     if (validate(self.creditCard(), 'creditCard')) {
       res.creditCard = 'Required format: 0000 — 0000 — 0000 — 0000';
@@ -60,8 +61,62 @@ function CheckoutVM() {
     return res;
   });
 
-  self.send = function () {
+  self.send = async function () {
     self.showErrors(true);
+
+    const formHasErrors = Object.keys(app.checkout.form()).length > 0;
+
+    if (formHasErrors) {
+      swal.fire({
+        icon: 'error',
+        title: 'Something is not right',
+        text: 'Please fill all the required fields',
+        width: '385px',
+      });
+      return;
+    }
+
+    self.sendingData(true);
+
+    const rawResponse = await fetch('/order', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName: self.firstName(),
+        lastName: self.lastName(),
+        email: self.email(),
+        country: self.country(),
+        postalCode: helper.filterDigitsOnly(self.postalCode()),
+        phone: helper.filterDigitsOnly(self.phone()),
+        creditCard: helper.filterDigitsOnly(self.creditCard()),
+        CVV: self.securityCode(),
+        expDate: self.expirationDate(),
+      }),
+    });
+    const content = await rawResponse.json();
+
+    if (content.errors) {
+      swal.fire({
+        icon: 'error',
+        title: 'There has been an error',
+        width: '385px',
+        html: content.errors
+          .map((item) => `Field '${item.field}' - ${item.message}`)
+          .join('<br/> '),
+      });
+    } else {
+      swal.fire({
+        icon: 'success',
+        title: 'Purchase order created',
+        text: 'Data has been saved successfully',
+        width: '385px',
+      });
+    }
+
+    self.sendingData(false);
   };
 }
 
@@ -81,11 +136,12 @@ const helper = {
     expirationDate: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/g,
     email:
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    phone:
-      /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}\-\d{2}$/g,
   },
   getDefaults: (slice) => {
     return JSON.parse(Defaults.replaceAll('&quot;', '"'))[slice];
+  },
+  filterDigitsOnly: (value) => {
+    return value.replace(/[^\d.]/g, '');
   },
 };
 
@@ -101,6 +157,9 @@ const validate = (value, tag) => {
         .replaceAll('—', '')
         .replaceAll(' ', '')
         .match(helper.regex[tag]);
+    }
+    if (tag === 'phone') {
+      return helper.filterDigitsOnly(value).length !== 9;
     }
     if (helper.regex[tag] && !!valueFormatted.match(helper.regex[tag])) {
       return false;

@@ -1,3 +1,7 @@
-<button class='button' data-bind="click: ()=>{{onClick}}()">
-  {{text}}
+<button class='button' data-bind="click: ()=>{{onClick}}(), enable: !{{loading}}">
+  @if(icon)
+    <span class="material-icons {{iconClass}}">{{icon}}</span>
+  @end
+  <span data-bind="if:{{loading}}">Loading...</span>
+  <span data-bind="if:!{{loading}}">{{text}}</span>
 </button>
