@@ -1,10 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "../../views/bacon.scss";
+@import "../../views/checkout.scss";
+@import "../../views/components/input.scss";
+@import "../../views/components/label.scss";
+@import "../../views/components/step.scss";
+@import "../../views/components/checkoutForm.scss";
+@import "../../views/components/cart.scss";
+@import "../../views/components/button.scss";
+@import "../../views/components/creditCard.scss";
+@import "../../views/components/select.scss";
 
-html, body {
+html,
+body {
   color: #000000;
-  background-color: #fff;
-  font-family: 'Roboto', sans-serif;
+  background-color: #f2f2f2 !important;
+  font-family: "Roboto", sans-serif;
   height: 100vh;
   font-size: 16px;
+}
+
+.defaultInput {
+  margin: 0px 5px 20px;
+  background-color: #fff;
+  min-height: 52px;
+  padding: 7px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #dcdcdc;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.inputInvalid {
+    border-bottom: 2px solid #dd0f0f;
+  }
 }

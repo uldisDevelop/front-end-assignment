@@ -1,0 +1,29 @@
+<div class='textInput defaultInput {{className}}' data-bind="css: { inputInvalid: !!{{vm}}.form().{{property}} }">
+  @!component('components/label', {
+    label:label,
+    vm: vm,
+    property: property
+  })
+
+  <input type="{{inputType || 'text'}}"
+    data-bind="value:{{vm}}.{{property}}, valueUpdate: 'afterkeydown'"
+    placeholder="{{placeholder}}"
+    autocomplete="off"
+  />
+
+  @if(icon)
+    <div class='icon {{iconClass}}'>
+      <span class="material-icons">{{icon}}</span>
+      @if(iconTooltip)
+        <div class='tooltip'>{{iconTooltip}}</div>
+      @end
+    </div>
+  @end
+
+  @if(creditCard)
+    <div>
+      @!component('components/creditCard')
+    </div>
+  @end
+
+</div>

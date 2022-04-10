@@ -1,0 +1,50 @@
+.select {
+  position: relative;
+  select {
+    border: transparent;
+    outline: none;
+    font-size: 16px;
+    margin: 3px 1px 0px;
+    font-weight: 500;
+    width: 100%;
+    position: relative;
+    left: -2px;
+    background: transparent;
+    opacity: 1;
+  }
+
+  .selectValueHidePanel {
+    pointer-events: none;
+    background-color: #fff;
+    position: absolute;
+    left: 0px;
+    right: 30px;
+    top: 20px;
+    bottom: 0px;
+    z-index: 2;
+  }
+
+  .wrapper {
+    position: absolute;
+    left: 0px;
+    right: 10px;
+    height: 38px;
+    display: flex;
+  }
+
+  .text {
+    position: absolute;
+    left: 9px;
+    right: 30px;
+    top: 22px;
+    bottom: 0px;
+    z-index: 3;
+    border: transparent;
+    pointer-events: none;
+    outline: none;
+    font-size: 16px;
+    margin: 3px 1px 0px;
+    font-weight: 500;
+    width: 100%;
+  }
+}

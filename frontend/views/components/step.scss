@@ -1,0 +1,21 @@
+.step {
+  margin: 20px 0px;
+  .number {
+    border-radius: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    width: 20px;
+  }
+  .label {
+    color: black;
+  }
+
+  .icon {
+    display: inline-block;
+    span {
+      font-size: 12px;
+    }
+  }
+}

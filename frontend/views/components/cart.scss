@@ -1,0 +1,52 @@
+.cart {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 59px 8px;
+  border-bottom: 2px solid #dcdcdc;
+
+  @media (max-width: 785px) {
+    margin: 10px 8px;
+  }
+
+  .cartInner {
+    border: 2px dotted #ebebeb;
+    padding: 12px 10px;
+    border-radius: 4px;
+  }
+
+  .title {
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .orderItems {
+    margin-bottom: 20px;
+
+    .orderItem {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+  .total {
+    margin: -4px 0px 16px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: 800;
+
+    .totalPrice {
+      font-size: 22px;
+    }
+  }
+
+  .line {
+    border: 1px dashed #ebebeb;
+    margin: 10px 0px;
+  }
+}

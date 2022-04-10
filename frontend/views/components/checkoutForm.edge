@@ -1,0 +1,111 @@
+<div class='checkoutForm'>
+
+  @!component('components/step', {
+    nr:'1',
+    label:'PERSONAL INFORMATION'
+  })
+
+  <div class='splitView'>
+
+    @!component('components/input', {
+      label:'First name',
+      vm: 'app.checkout',
+      property: 'firstName',
+      placeholder: 'Elon',
+      className:'splitViewItem',
+    })
+
+    @!component('components/input', {
+      label:'Last name',
+      vm: 'app.checkout',
+      property: 'lastName',
+      placeholder: 'Musk',
+      className:'splitViewItem',
+    })
+
+  </div>
+
+  @!component('components/input', {
+    label:'Email',
+    vm: 'app.checkout',
+    property: 'email',
+    placeholder: 'elon@spacex.com',
+  })
+
+  <div class='splitView'>
+
+    @!component('components/select', {
+      label:'Country',
+      options: 'app.checkout.countries',
+      vm: 'app.checkout',
+      property: 'country',
+      placeholder: '',
+      className:'splitViewItem',
+    })
+
+    @!component('components/input', {
+      label: 'Postal Code',
+      vm: 'app.checkout',
+      property: 'postalCode',
+      placeholder: '10001',
+      className: 'splitViewItem',
+    })
+
+  </div>
+
+  @!component('components/input', {
+    label: 'Phone Number',
+    vm: 'app.checkout',
+    property: 'phone',
+    placeholder: '(212) 692-93-92',
+  })
+
+  @!component('components/step', {
+    nr: '2',
+    label: 'PAYMENTS DETAILS',
+    icon: 'lock'
+  })
+
+  @!component('components/input', {
+    label: 'Credit Card Number',
+    vm: 'app.checkout',
+    property: 'creditCard',
+    placeholder: '0000 – 0000 – 0000 – 0000',
+    image: '/images/CreditCard2.png',
+    creditCard: true
+  })
+
+  <div class='splitView'>
+
+    @!component('components/input', {
+      label: 'Security code',
+      vm: 'app.checkout',
+      property: 'securityCode',
+      placeholder: '***',
+      className: 'splitViewItem',
+      icon: 'help_outline',
+      iconClass: 'securityCodeIcon',
+      iconTooltip: 'Security code is the three-digit number on the back of your credit card',
+      inputType: 'password'
+    })
+
+    @!component('components/input', {
+      label: 'Expiration date',
+      vm: 'app.checkout',
+      property: 'expirationDate',
+      placeholder: 'MM / YY',
+      className: 'splitViewItem',
+    })
+
+  </div>
+
+  <div class='spacer'></div>
+
+  @!component('components/button', {
+    text: 'COMPLETE PURCHASE',
+    onClick: 'app.checkout.send',
+  })
+
+  <div class='spacer'></div>
+
+</div>

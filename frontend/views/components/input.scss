@@ -1,0 +1,57 @@
+.textInput {
+  position: relative;
+
+  input {
+    border: transparent;
+    outline: none;
+    font-size: 16px;
+    margin: 3px 1px 0px;
+    font-weight: 500;
+    width: 100%;
+
+    &::placeholder {
+      color: #9b9b9b;
+      font-weight: 500;
+      opacity: 1;
+    }
+  }
+  .icon {
+    position: absolute;
+    z-index: 4;
+    right: 15px;
+    top: 52%;
+    transform: translateY(-50%);
+    cursor: default;
+    &:hover {
+      .tooltip {
+        opacity: 1;
+      }
+    }
+
+    .tooltip {
+      transition: opacity 0.1s;
+      pointer-events: none;
+      position: absolute;
+      opacity: 0.01;
+      bottom: calc(100% + 10px);
+      background-color: #fff;
+      border: 1px solid #f1f1f1;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 210px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 1px 2px 3px 0px #e5e5e5;
+    }
+  }
+
+  .creditCard {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,20 @@
+<div class='select defaultInput {{className}}'
+     data-bind="css: { inputInvalid: !!{{vm}}.form().{{property}} }">
+
+  @!component('components/label', {
+    label:label,
+    vm: vm,
+    property: property
+  })
+
+  <div class='selectValueHidePanel'></div>
+  <div class='wrapper'>
+    <select data-bind="
+      value: {{vm}}.{{property}},
+      options: {{options}},
+      optionsText: 'text',
+      optionsValue:'value',
+    "></select>
+  </div>
+  <div class='text' data-bind="text:app.checkout.selectedCountryText()"></div>
+</div>

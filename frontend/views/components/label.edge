@@ -1,0 +1,6 @@
+<div class='label' data-bind="css: { invalid: !!{{vm}}.form().{{property}} }">
+  {{label}}
+  <span class='invalidMessage' data-bind="if:{{vm}}.form().{{property}}">
+    <span data-bind="text:{{vm}}.form().{{property}}"></span>
+  </span>
+</div>

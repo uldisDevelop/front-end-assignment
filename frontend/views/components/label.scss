@@ -1,0 +1,13 @@
+.label {
+  color: #515356;
+  font-weight: 800;
+  font-size: 12px;
+  margin: 0px 3px;
+
+  &.invalid {
+    .invalidMessage {
+      color: #dd0f0f;
+      margin-left: 4px;
+    }
+  }
+}

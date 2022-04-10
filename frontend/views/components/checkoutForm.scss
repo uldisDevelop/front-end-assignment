@@ -1,0 +1,14 @@
+.checkoutForm {
+  .splitView {
+    display: flex;
+    .splitViewItem {
+      flex: 1 1 0;
+    }
+  }
+  .spacer {
+    height: 13px;
+  }
+  .securityCodeIcon {
+    color: #dfdfdf;
+  }
+}

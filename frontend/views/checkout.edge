@@ -1,0 +1,24 @@
+@layout('layouts/main')
+@set('title', 'Checkout')
+
+@section('body')
+  <div class='checkout'>
+
+    <div class='checkoutContainer'>
+      @!component('components/checkoutForm')
+    </div>
+
+    <div class='cartContainer'>
+      @!component('components/cart')
+    </div>
+  </div>
+
+  @section('scripts')
+  <script type="text/javascript">
+    window.Defaults = `{
+      "cart":{{JSON.stringify(state.cart)}}
+    }`;
+  </script>
+  <script type="text/javascript" src="/viewmodels/checkoutVM.js"></script>
+  @end
+@end

@@ -1,0 +1,37 @@
+<div class='cart'>
+  <div class='cartInner'>
+    <div class='title'>
+      YOUR ORDER
+    </div>
+    <div class='orderItems' data-bind="foreach:app.cart.items">
+      <div class='orderItem'>
+        <div data-bind="text:name"></div>
+        <div>
+          $ <span data-bind="text:price"></span>
+        </div>
+      </div>
+    </div>
+    <div class='line'></div>
+    <div class='orderItems' >
+      <div class='orderItem'>
+        <div>Total purchases</div>
+        <div>
+          $ <span data-bind="text:app.cart.totals.subTotal.toFixed(2)"></span>
+        </div>
+      </div>
+      <div class='orderItem'>
+        <div>Estimated tax</div>
+        <div>
+          $ <span data-bind="text:app.cart.totals.tax"></span>
+        </div>
+      </div>
+    </div>
+    <div class='line'></div>
+    <div class='total'>
+      <div>Total</div>
+      <div class='totalPrice'>
+        $ <span data-bind="text:app.cart.totals.grandTotal"></span>
+      </div>
+    </div>
+  </div>
+</div>
