@@ -1,39 +1,48 @@
-# Marketer Front-end Assignment
+# Notes
 
-* Please use real Github accounts, as we check for contribution history. However, if you want to stay anonymous, please send patch instead.
-* We are not answering any questions about this test. Everyone work with the same set of information, to let us fairly judge your work.
-* The test is designed in a way, that can confuse you or seems weird, because we want to test you in a way worse environment than you will work on a daily basis. It's also not a representation of the tech stack we are using in real projects.
-
-## Before you start
-* Fork this repository, it needs to stay on Github, publicly available.
-* The test is based on [AdonisJS](https://adonisjs.com/) a full stack Node.js framework, but you don't need to write any backend stuff, nor have any experience with Adonis or other similar framework.
-* After installing the dependencies and running `npm run dev`, you should see a start page on http://localhost:3333. If something is wrong, you probably use a wrong version of Node.js.
-
----
+Hello,
+In order to stay true to the provided framework as much as I could I decided to use inbuilt .edge templates with a state management library called [knockout.js](https://www.npmjs.com/package/knockout). This way I was able to separate all the business logic into a javascript file (VM - viewmodel) and use .edge templates for the view layer. Worked out kind of reasonable. For the styling I went with SASS and used a dedicated style file for each template.
 
 ### Task 1
-On [/bacon](http://localhost:3333/bacon) you should see a page with beautiful slices of fried bacon, that comes from external source.
+>Bacon cloning functionality
 
-Create bacon cloning logic and attach it to **Yeah, I want more bacon!** button.
+First I wrote plain javascript that just cloned the image and appended it to the section, but then I thought that since in the next tasks I will need some state management, I would add it at this point and go with a unified way of writing 'pages'.
+
 
 ### Task 2
-Take a look at [design file](./design.png) and recreate it. Use any way of writing styles you are comfortable with and pick `Roboto` as the font family.
+>Recreate [design](./design.png)
 
-By default Adonis support [PostCSS](https://docs.adonisjs.com/guides/assets-manager#setup-postcss), [SASS, Less and Stylus](https://docs.adonisjs.com/guides/assets-manager#setup-sass-less-and-stylus) you need to enable one of it, but it's just Webpack under the hood, so feel free to hook whatever you like the most.
+Form can be found on [/checkout](http://localhost:3333/checkout). I approached form build and validation at the same time. 
+ 
+
+* Divided the form into two logical components - Checkout and Cart. 
+* Added the provided Cart state into a Document Script enabling it to be used in javascript. 
+* Tried to extract commonly used components into their own separate files. 
+* Form is mobile friendly. 
+* Credit card dashes are added automatically.
+* Modified valid phone number format to match BE validation.
+* Tested form on Chrome, Firefox, Edge.
 
 ### Task 3
-Provide simple JS validation for checkout form created earlier.
+>Provide simple JS validation
 
+User can type only valid keys into input fields & when Confirm is clicked, invalid fields are displayed with error messages.  
 ### Task 4
-Send form data to the `POST /order` endpoint and show success / error message based on API response.
+>Send form data to the `POST /order` endpoint
 
-Accepted data formats:
-* Postal code: 00000
-* Phone number: 000000000
-* Credit card: 0000000000000000
-* CVV: 000
-* Exp. date: 00/00
+Added logic for posting data & added status modal for showing result to the user. Did not process the error data, just displayed as is.
 
----
+### Screenshots
 
-**Good luck 🤗**
+![plot](./readmeImages/Form.png)
+
+![plot](./readmeImages/FormFilled.png)
+
+![plot](./readmeImages/FormErrors.png)
+
+![plot](./readmeImages/FormMobile.png)
+
+![plot](./readmeImages/FormSuccess.png)
+
+![plot](./readmeImages/FormError.png)
+
