@@ -34,17 +34,15 @@ Added logic for posting data & added status modal for showing result to the user
 
 ### Screenshots
 
+![Form](https://raw.githubusercontent.com/uldisDevelop/front-end-assignment/master/readmeImages/Form.PNG?raw=true "Form")
 
+![FormFilled](https://raw.githubusercontent.com/uldisDevelop/front-end-assignment/master/readmeImages/FormFilled.PNG?raw=true "FormFilled")
 
-![Alt text](readmeImages/Form.png?raw=true "Form")
+![FormErrors](https://raw.githubusercontent.com/uldisDevelop/front-end-assignment/master/readmeImages/FormErrors.PNG?raw=true "FormErrors")
 
-![Alt text](readmeImages/FormFilled.png?raw=true "FormFilled")
+![FormMobile](https://raw.githubusercontent.com/uldisDevelop/front-end-assignment/master/readmeImages/FormMobile.PNG?raw=true "FormMobile")
 
-![Alt text](readmeImages/FormErrors.png?raw=true "FormErrors")
+![FormSuccess](https://raw.githubusercontent.com/uldisDevelop/front-end-assignment/master/readmeImages/FormSuccess.PNG?raw=true "FormSuccess")
 
-![Alt text](readmeImages/FormMobile.png?raw=true "FormMobile")
-
-![Alt text](readmeImages/FormSuccess.png?raw=true "FormSuccess")
-
-![Alt text](readmeImages/FormError.png?raw=true "FormError")
+![FormError](https://raw.githubusercontent.com/uldisDevelop/front-end-assignment/master/readmeImages/FormError.PNG?raw=true "FormError")
 
