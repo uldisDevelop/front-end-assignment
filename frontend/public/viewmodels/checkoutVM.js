@@ -3,15 +3,15 @@ function CheckoutVM() {
   self.showErrors = ko.observable(false);
   self.sendingData = ko.observable(false);
 
-  self.firstName = ko.observable('');
-  self.lastName = ko.observable('');
-  self.email = ko.observable('');
+  self.firstName = ko.observable('').extend({ text: 50 });
+  self.lastName = ko.observable('').extend({ text: 50 });
+  self.email = ko.observable('').extend({ email: 100 });
   self.country = ko.observable('US');
-  self.postalCode = ko.observable('');
-  self.phone = ko.observable('');
-  self.creditCard = ko.observable('');
-  self.securityCode = ko.observable('');
-  self.expirationDate = ko.observable('');
+  self.postalCode = ko.observable('').extend({ numeric: 5 });
+  self.phone = ko.observable('').extend({ phone: 9 });
+  self.creditCard = ko.observable('').extend({ creditCard: true });
+  self.securityCode = ko.observable('').extend({ numeric: 3 });
+  self.expirationDate = ko.observable('').extend({ creditCardExp: true });
 
   self.countries = [
     { value: 'US', text: 'United States' },
@@ -135,7 +135,7 @@ function CartVM() {
 
   if (dependenciesLoaded) {
     window.app = window.app || {};
-
+    app.applyBindings();
     app.checkout = new CheckoutVM();
     app.cart = new CartVM();
 
