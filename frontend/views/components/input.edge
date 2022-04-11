@@ -6,9 +6,11 @@
   })
 
   <input type="{{inputType || 'text'}}"
-    data-bind="value:{{vm}}.{{property}}, valueUpdate: 'afterkeydown'"
+    data-bind="textInput:{{vm}}.{{property}}, valueUpdate: 'afterkeydown'"
     placeholder="{{placeholder}}"
-    autocomplete="off"
+    readonly="true"
+    onfocus="this.removeAttribute('readonly');"
+
   />
 
   @if(icon)
