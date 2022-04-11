@@ -29,6 +29,7 @@ function CheckoutVM() {
       return {};
     }
     const res = {};
+    const validate = app.helper.validate;
 
     if (validate(self.firstName(), 'required')) {
       res.firstName = 'Field is required';
@@ -89,9 +90,9 @@ function CheckoutVM() {
         lastName: self.lastName(),
         email: self.email(),
         country: self.country(),
-        postalCode: helper.filterDigitsOnly(self.postalCode()),
-        phone: helper.filterDigitsOnly(self.phone()),
-        creditCard: helper.filterDigitsOnly(self.creditCard()),
+        postalCode: app.helper.filterDigitsOnly(self.postalCode()),
+        phone: app.helper.filterDigitsOnly(self.phone()),
+        creditCard: app.helper.filterDigitsOnly(self.creditCard()),
         CVV: self.securityCode(),
         expDate: self.expirationDate(),
       }),
@@ -123,60 +124,21 @@ function CheckoutVM() {
 function CartVM() {
   const self = this;
 
-  const cart = helper.getDefaults('cart');
+  const cart = app.helper.getDefaults('cart');
+
   self.items = cart.items;
   self.totals = cart.totals;
 }
-
-const helper = {
-  regex: {
-    postalCode: /\b\d{5}\b/g,
-    creditCard: /^[0-9]{16}$/g,
-    securityCode: /\b\d{3}\b/g,
-    expirationDate: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/g,
-    email:
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-  },
-  getDefaults: (slice) => {
-    return JSON.parse(Defaults.replaceAll('&quot;', '"'))[slice];
-  },
-  filterDigitsOnly: (value) => {
-    return value.replace(/[^\d.]/g, '');
-  },
-};
-
-const validate = (value, tag) => {
-  if (tag === 'required') {
-    return value.trim() === '';
-  } else {
-    const valueFormatted = value.trim().toLowerCase();
-
-    if (tag === 'creditCard') {
-      return !valueFormatted
-        .replaceAll('-', '')
-        .replaceAll('—', '')
-        .replaceAll(' ', '')
-        .match(helper.regex[tag]);
-    }
-    if (tag === 'phone') {
-      return helper.filterDigitsOnly(value).length !== 9;
-    }
-    if (helper.regex[tag] && !!valueFormatted.match(helper.regex[tag])) {
-      return false;
-    }
-    return true;
-  }
-};
 
 (function initApp() {
   const dependenciesLoaded = typeof ko !== 'undefined';
 
   if (dependenciesLoaded) {
-    const app = {
-      checkout: new CheckoutVM(),
-      cart: new CartVM(),
-    };
-    window['app'] = app;
+    window.app = window.app || {};
+
+    app.checkout = new CheckoutVM();
+    app.cart = new CartVM();
+
     ko.applyBindings(app);
   } else {
     setTimeout(initApp, 10);
