@@ -34,15 +34,17 @@ Added logic for posting data & added status modal for showing result to the user
 
 ### Screenshots
 
-![plot](./readmeImages/Form.png)
 
-![plot](./readmeImages/FormFilled.png)
 
-![plot](./readmeImages/FormErrors.png)
+![Alt text](readmeImages/Form.png?raw=true "Form")
 
-![plot](./readmeImages/FormMobile.png)
+![Alt text](readmeImages/FormFilled.png?raw=true "FormFilled")
 
-![plot](./readmeImages/FormSuccess.png)
+![Alt text](readmeImages/FormErrors.png?raw=true "FormErrors")
 
-![plot](./readmeImages/FormError.png)
+![Alt text](readmeImages/FormMobile.png?raw=true "FormMobile")
+
+![Alt text](readmeImages/FormSuccess.png?raw=true "FormSuccess")
+
+![Alt text](readmeImages/FormError.png?raw=true "FormError")
 
